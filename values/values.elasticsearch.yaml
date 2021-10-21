@@ -1,7 +1,7 @@
 elasticsearch:
   enabled: false
   external: true
-  host: "elasticsearch-master-headless"
+  host: "elasticsearch-logging"
   port: "9200"
   version: "v7"
   scheme: "http"
