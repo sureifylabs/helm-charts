@@ -324,6 +324,9 @@ grafana:
     create: false
     pspEnabled: false
     namespaced: true
+  service:
+    type: LoadBalancer
+    port: 80
   dashboardProviders:
     dashboardproviders.yaml:
       apiVersion: 1
