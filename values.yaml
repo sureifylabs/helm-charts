@@ -10,7 +10,7 @@ server:
   sidecarContainers:
   image:
     repository: temporalio/server
-    tag: 1.12.2
+    tag: 1.14.0
     pullPolicy: IfNotPresent
 
   # Global default settings (can be overridden per service)
@@ -221,13 +221,16 @@ admintools:
   enabled: true
   image:
     repository: temporalio/admin-tools
-    tag: 1.12.2
+    tag: 1.14.0
     pullPolicy: IfNotPresent
 
   service:
     type: ClusterIP
     port: 22
     annotations: {}
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
 
 web:
   enabled: true
@@ -243,7 +246,7 @@ web:
 
   image:
     repository: temporalio/web
-    tag: 1.12.0
+    tag: 1.13.0
     pullPolicy: IfNotPresent
 
   service:
