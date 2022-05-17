@@ -1,8 +1,11 @@
 elasticsearch:
   enabled: false
   external: true
-  host: "elasticsearch-master-headless"
-  port: "9200"
+  host: search-platform-temporal-nfvdvd4o42csvijbuyggykslhq.us-west-2.es.amazonaws.com
+  scheme: https
+  port: 443
   version: "v7"
-  scheme: "http"
   logLevel: "error"
+  username: "esadmin"
+  password: "TEST"
+  visibilityIndex: "temporal_visibility_v1_dev"
