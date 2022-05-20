@@ -1,6 +1,6 @@
 #!/bin/bash -e
 CLUSTER_NAME=platform-dev-cluster
-SERVICE_ACCOUNT_NAMESPACE=platform-temporal
+SERVICE_ACCOUNT_NAMESPACE=observability
 AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query "Account" --output text)
 OIDC_PROVIDER=$(aws eks describe-cluster --name $CLUSTER_NAME --query "cluster.identity.oidc.issuer" --output text | sed -e "s/^https:\/\///")
 SERVICE_ACCOUNT_AMP_INGEST_NAME=amp-iamproxy-ingest-service-account

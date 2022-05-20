@@ -9,7 +9,7 @@
       "Action": "sts:AssumeRoleWithWebIdentity",
       "Condition": {
         "StringEquals": {
-          "oidc.eks.us-west-2.amazonaws.com/id/9E7733E95E09A7B576AF92B64543296E:sub": "system:serviceaccount:platform-temporal:amp-iamproxy-ingest-service-account"
+          "oidc.eks.us-west-2.amazonaws.com/id/9E7733E95E09A7B576AF92B64543296E:sub": "system:serviceaccount:observability:amp-iamproxy-ingest-service-account"
         }
       }
     }

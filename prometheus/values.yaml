@@ -31,16 +31,6 @@ serviceAccounts:
     annotations:
       eks.amazonaws.com/role-arn: arn:aws:iam::973190367787:role/amp-iamproxy-ingest-role
 
-server:
-  remoteWrite:
-    - url: https://aps-workspaces.us-west-2.amazonaws.com/workspaces/platform-temporal/api/v1/remote_write
-      sigv4:
-        region: us-west-2
-      queue_config:
-        max_samples_per_send: 1000
-        max_shards: 200
-        capacity: 2500
-
 alertmanager:
   ## If false, alertmanager will not be installed
   ##
@@ -236,7 +226,7 @@ alertmanager:
 
     ## alertmanager data Persistent Volume size
     ##
-    size: 2Gi
+    size: 20Gi
 
     ## alertmanager data Persistent Volume Storage Class
     ## If defined, storageClassName: <storageClass>
@@ -759,7 +749,14 @@ server:
     evaluation_interval: 1m
   ## https://prometheus.io/docs/prometheus/latest/configuration/configuration/#remote_write
   ##
-  remoteWrite: []
+  remoteWrite:
+    - url: https://aps-workspaces.us-west-2.amazonaws.com/workspaces/ws-d82efd19-3a47-40e2-b017-788fb1f650fa/api/v1/remote_write
+      sigv4:
+        region: us-west-2
+      queue_config:
+        max_samples_per_send: 1000
+        max_shards: 200
+        capacity: 2500
   ## https://prometheus.io/docs/prometheus/latest/configuration/configuration/#remote_read
   ##
   remoteRead: []
@@ -930,7 +927,7 @@ server:
 
     ## Prometheus server data Persistent Volume size
     ##
-    size: 8Gi
+    size: 100Gi
 
     ## Prometheus server data Persistent Volume Storage Class
     ## If defined, storageClassName: <storageClass>
@@ -1350,7 +1347,7 @@ pushgateway:
 
     ## pushgateway data Persistent Volume size
     ##
-    size: 2Gi
+    size: 20Gi
 
     ## pushgateway data Persistent Volume Storage Class
     ## If defined, storageClassName: <storageClass>
