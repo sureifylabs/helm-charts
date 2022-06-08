@@ -1,0 +1,41 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: sureify
+  name: temporal-web-old
+spec:
+  selector:
+    matchLabels:
+      app: temporal-web-old
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: temporal-web-old
+    spec:
+      containers:
+        - name: temporal-web-old
+          image: temporalio/web:1.13.0
+#          command: [ "/bin/bash", "-c", "--" ]
+#          args: [ "while true; do sleep 30; done;" ]
+          ports:
+            - name: web
+              containerPort: 8088
+          env:
+            - name: TEMPORAL_GRPC_ENDPOINT
+              value: temporal-frontend:7233
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: temporal-web-old
+  namespace: sureify
+spec:
+  selector:
+    app: temporal-web-old
+  ports:
+    - name: web
+      port: 8088
+      targetPort: 8088
+  type: NodePort
